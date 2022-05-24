@@ -1,0 +1,5 @@
+[packages]
+requests = "*"
+
+[scripts]
+local = "python3 local_start_up.py"
