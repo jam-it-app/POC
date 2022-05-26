@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/home.css') }}">
+    <title>JamIt</title>
+</head>
+<body>
+    <div class="container">
+        <button class="button1" onclick="createParty()">Create a party</button>
+        <input type="text" placeholder="Party Code" className="inputBoxCode" id="input"/>
+        <button class="button2" onclick="joinParty()">Join a party</button>
+    </div>
+</body>
+</html>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    function createParty() {
+        console.log(location.href)
+        
+        scope="playlist-read-collaborative playlist-modify-public user-library-read user-read-email user-read-private playlist-modify-private user-read-private playlist-read-private" 
+        redirect_uri = "http://127.0.0.1:5000/api/callback"
+        client_id = "121a4c157e334d57836709c2625c4cad"
+
+        url = 'https://accounts.spotify.com/authorize'
+        url += '?response_type=token'
+        url += '&client_id=' + client_id
+        url += '&scope=' + scope
+        url += '&redirect_uri=' + redirect_uri
+        console.log(url)
+        window.location.replace(url)
+    }
+    function joinParty() {
+        input_code = document.getElementById("input").value
+        $.ajax({
+            url: "http://127.0.0.1:5000/api/joinroom",
+            type: "GET",
+            data: {"roomcode": input_code},
+            success: function(jqXHR) {
+                console.log(jqXHR.status)
+                if (jqXHR.status == 200) {
+                    window.location.replace(location.href + 'party/' + input_code)
+                } else {
+                    error()
+                }
+            },
+            error: error()
+
+        })
+    }
+    function error() {
+        console.log("failure")
+        document.getElementById("input").placeholder = "Enter a valid room code"
+    }
+</script>

@@ -29,7 +29,7 @@ class SpotifyClient:
         #     "scope": "playlist-read-collaborative playlist-modify-public user-library-read user-read-email user-read-private playlist-modify-private user-read-private playlist-read-private" 
         # }
         scope="playlist-read-collaborative playlist-modify-public user-library-read user-read-email user-read-private playlist-modify-private user-read-private playlist-read-private" 
-        redirect_uri = "http://localhost:8080/"
+        redirect_uri = "http://127.0.0.1:5000/"
 
         url = 'https://accounts.spotify.com/authorize'
         url += '?response_type=token'

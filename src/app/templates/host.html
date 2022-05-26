@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/host.css') }}">
+    <title>JamIt</title>
+</head>
+<body>
+    <div class="container"></div>
+        <p>Room Code is: {{room_id}}</p>
+        <div class="wrap">
+            <div class="search">
+            <input type="text" class="searchTerm" placeholder="Enter a playlist">
+            <button type="submit" class="searchButton" onclick='test()'>
+                <i class="fa fa-search"></i>
+            </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    function test() {
+        console.log("Clicked!")
+    }
+    
+</script>
