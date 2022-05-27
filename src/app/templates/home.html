@@ -13,11 +13,19 @@
 </body>
 </html>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
 <script>
     function createParty() {
+        /*
+        var socket = io();
+        socket.on('connect', function() {
+            socket.emit('createParty', {data: 'test'});
+        });
+        */
+        
         console.log(location.href)
         
-        scope="playlist-read-collaborative playlist-modify-public user-library-read user-read-email user-read-private playlist-modify-private user-read-private playlist-read-private" 
+        scope="playlist-read-collaborative playlist-modify-public user-library-read user-read-email user-read-private playlist-modify-private user-read-private playlist-read-private user-modify-playback-state" 
         redirect_uri = "http://127.0.0.1:5000/api/callback"
         client_id = "121a4c157e334d57836709c2625c4cad"
 
@@ -28,6 +36,7 @@
         url += '&redirect_uri=' + redirect_uri
         console.log(url)
         window.location.replace(url)
+        
     }
     function joinParty() {
         input_code = document.getElementById("input").value
